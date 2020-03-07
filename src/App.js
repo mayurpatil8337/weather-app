@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
 import './App.css';
+import { getWeatherData } from './action'
+import WhetherDetails from './WhetherDetails';
+import _ from 'lodash'
 
-function App() {
+const App = (props) => {
+  const [selectedCity, setSelectedCity] = useState()
+
+  const onClickButton = () => {
+    props.getWeatherData(selectedCity)
+  }
+  const canvas = {
+    position: 'absolute',
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app container">
+      <img style={canvas} className="weather-image" src="/weather1.jpeg" alt="weather-background-image" />
+
+      <ul className="list-wrap row">
+        {
+          ["New York", "Los Angeles", "Chicago", "Houston", "Pune", "Mumbai", "Canterbury", "Shanghai", "Moscow"].map((item, i) => (
+          <div className="col-xs-3 col-sm-3 col-md-4">
+            <li key={i}>
+            <input id={item} type="radio" onClick={(e) => {
+              setSelectedCity(e.target.value)
+            }} name="city" value={item} />
+            <label htmlFor={item}>{item}</label>
+          </li>
+          </div>))
+        }
+      </ul>
+      <button className="check-button" onClick={onClickButton}>Check</button>
+      {
+        (selectedCity && !_.isEmpty(props.weatherData)) &&
+        <WhetherDetails selectedCity={selectedCity} {...props.weatherData} />
+      }
     </div>
   );
 }
 
-export default App;
+
+const mapStateToProps = state => ({
+  weatherData: state
+})
+const mapDispatchToProps = dispatch => ({
+  getWeatherData: city => dispatch(getWeatherData(city))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
