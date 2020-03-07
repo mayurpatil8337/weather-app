@@ -4,10 +4,11 @@ import './App.css';
 import { getWeatherData } from './action'
 import WhetherDetails from './WhetherDetails';
 import _ from 'lodash'
+import Spinner from 'react-bootstrap/Spinner'
 
 const App = (props) => {
   const [selectedCity, setSelectedCity] = useState()
-
+  const {weatherData} =props
   const onClickButton = () => {
     props.getWeatherData(selectedCity)
   }
@@ -28,9 +29,9 @@ const App = (props) => {
           </div>))
         }
       </ul>
-      <button className="check-button" onClick={onClickButton}>Check</button>
-      {
-        (selectedCity && !_.isEmpty(props.weatherData)) &&
+      <button className="check-button" onClick={onClickButton}> {weatherData.loading?<Spinner animation="border" />:"Check"}</button>
+      
+      { ! weatherData.loading && (selectedCity && !_.isEmpty(props.weatherData)) &&
         <WhetherDetails selectedCity={selectedCity} {...props.weatherData} />
       }
     </div>
