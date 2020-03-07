@@ -11,19 +11,16 @@ const App = (props) => {
   const onClickButton = () => {
     props.getWeatherData(selectedCity)
   }
-  const canvas = {
-    position: 'absolute',
-
-  }
+  
   return (
     <div className="app container">
-      <img style={canvas} className="weather-image" src="/weather1.jpeg" alt="weather-background-image" />
+      <img className="weather-image" src="/weather1.jpeg" alt="weather-background-image" />
 
       <ul className="list-wrap row">
         {
           ["New York", "Los Angeles", "Chicago", "Houston", "Pune", "Mumbai", "Canterbury", "Shanghai", "Moscow"].map((item, i) => (
-          <div className="col-xs-3 col-sm-3 col-md-4">
-            <li key={i}>
+          <div  key={i} className="col-xs-3 col-sm-3 col-md-4">
+            <li>
             <input id={item} type="radio" onClick={(e) => {
               setSelectedCity(e.target.value)
             }} name="city" value={item} />

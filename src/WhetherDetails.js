@@ -2,23 +2,22 @@ import React from 'react';
 import _ from 'lodash'
 
 const WhetherDetails = (props) => {
-    console.log("data", props.data)
     const { sys, weather, wind, main, name } = props.data
 
     const getWeatherIcon = (season = '') => {
         if (season.toLowerCase().includes('rain')) {
-            return <img className="weather-icon" src="rain.png"></img>
+            return <img className="weather-icon" src="rain.png" alt="rain"/>
         } else if (season.toLowerCase().includes('haze')) {
-            return <img className="weather-icon" src="haze.png"></img>
+            return <img className="weather-icon" src="haze.png" alt="haze"/>
         }
         else if (season.toLowerCase().includes('clouds')) {
-            return <img className="weather-icon" src="clouds.png"></img>
+            return <img className="weather-icon" src="clouds.png" alt="haze"/>
         }
         else if (season.toLowerCase().includes('clear')) {
-            return <img className="weather-icon" src="clear-sky.png"></img>
+            return <img className="weather-icon" src="clear-sky.png" alt="clear-sky"/>
         }
         else {
-            return <img className="weather-icon" src="weather.png" />
+            return <img className="weather-icon" src="weather.png" alt="weather"/>
         }
     }
 
@@ -36,7 +35,7 @@ const WhetherDetails = (props) => {
 
     const getWindSpeed = () => {
         return (<>
-            <img className="wind-icon" src="wind.png"></img>
+            <img className="wind-icon" src="wind.png" alt="wind"/>
             <p className="">{wind.speed}K/H</p>
         </>)
     }
@@ -51,12 +50,12 @@ const WhetherDetails = (props) => {
                     </div>
                     <div className="details-wrap">
                         <div className="presure-wrap">
-                            <img className="presure-icon" src="pressure.png"></img>
+                            <img className="presure-icon" src="pressure.png" alt="pressure"/>
                             <p className="">{main.pressure}</p>
                         </div>
                         <div className="wind-wrap">{getWindSpeed()}</div>
                         <div className="presure-wrap">
-                            <img className="presure-icon"  src="humidity.png" />
+                            <img className="presure-icon"  src="humidity.png" alt="humidity"/>
                             <p className="">{main.humidity}</p>
                         </div>
                     </div>
