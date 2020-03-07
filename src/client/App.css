@@ -10,8 +10,8 @@
   top: 0;
   bottom: 0;
 }
-.spinner-loader{
-  
+.app{
+margin-top:20px;
 }
 .list-wrap{
   list-style: none
@@ -28,7 +28,7 @@ h1,h2,h3,h4,h5,h6,p,span,label,button{
   font-weight: bold;
 }
 .check-button{
-  background-color:#929292;
+  background-color:#4c4d4e;
   color:white;
   border: none;
   display: table;

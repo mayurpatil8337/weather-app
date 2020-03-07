@@ -14,7 +14,7 @@ const App = (props) => {
   }
   return (
     <div className="app container">
-      <img className="weather-image" src="/weather1.jpeg" alt="weather-background-image" />
+      <img className="weather-image" src="/weather_img.jpg" alt="weather-background-image" />
 
       <ul className="list-wrap row">
         {
