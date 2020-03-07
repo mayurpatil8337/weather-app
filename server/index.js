@@ -6,11 +6,12 @@ const _ = require('lodash')
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
+const apiKey="f630966bce3259a2cdffd1c016b9121e"
 
 app.get('/getCities', (req, res) => {
   const city = req.query.city;
   res.setHeader('Content-Type', 'application/json');
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=f630966bce3259a2cdffd1c016b9121e`
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`
 
   https.get(url, (resp) => {
     let data = '';
