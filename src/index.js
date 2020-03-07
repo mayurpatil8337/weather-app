@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
-import rootReducer from './reducer'
-// import logger from 'redux-logger'
+import rootReducer from './client/reducer'
 import createSagaMiddleware from 'redux-saga'
-import mySaga from './sagas'
+
+// import logger from 'redux-logger'
+import mySaga from './client/sagas'
+import App from './client/App';
 
 const sagaMiddleware = createSagaMiddleware()
 

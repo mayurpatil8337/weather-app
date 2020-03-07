@@ -11,7 +11,6 @@ const App = (props) => {
   const onClickButton = () => {
     props.getWeatherData(selectedCity)
   }
-  console.log("///////////////////////",process.env.APPID)
   return (
     <div className="app container">
       <img className="weather-image" src="/weather1.jpeg" alt="weather-background-image" />
