@@ -9,8 +9,15 @@ import Spinner from 'react-bootstrap/Spinner'
 const App = (props) => {
   const [selectedCity, setSelectedCity] = useState()
   const {weatherData} =props
-  const onClickButton = () => {
-    props.getWeatherData(selectedCity)
+
+
+  const onInputChange = (e) => {
+    setSelectedCity(e.target.value)
+  }
+const cityName = _.get(weatherData,'data.name')
+
+const onClickButton = () => {
+  (selectedCity!==cityName) && props.getWeatherData(selectedCity)
   }
   return (
     <div className="app container">
@@ -21,9 +28,7 @@ const App = (props) => {
           ["New York", "Los Angeles", "Chicago", "Houston", "Pune", "Mumbai", "Canterbury", "Shanghai", "Moscow"].map((item, i) => (
           <div  key={i} className="col-xs-3 col-sm-3 col-md-4">
             <li>
-            <input id={item} type="radio" onClick={(e) => {
-              setSelectedCity(e.target.value)
-            }} name="city" value={item} />
+            <input id={item} type="radio" onClick={onInputChange} name="city" value={item} />
             <label htmlFor={item}>{item}</label>
           </li>
           </div>))
